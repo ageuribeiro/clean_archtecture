@@ -1,6 +1,8 @@
+# main
+
 from fastapi import FastAPI, HTTPException
-from application.use_cases.consular_saldo import ConsultarSaldoUseCase
-from adapters.repository.contas_repository import ContaRepositoryMemoria
+from application.use_cases.consultar_saldo import ConsultarSaldoUseCase
+from adapters.repository.contas_repository import ContasRepositoryMemoria
 from infrastructure.logging.logging_config import setup_logging
 import logging
 
@@ -9,8 +11,7 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Finanças Clean Architecure", version="1.0.0")
 
-contas_repo = ContaRepositoryMemoria()
-
+contas_repo = ContasRepositoryMemoria()
 
 @app.on_event("startup")
 async def startup_event():
